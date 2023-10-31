@@ -7,12 +7,14 @@
     <script>
       function solution(arr) {
         let answer = [];
-        let min;
-
         answer = arr.filter((val) => Boolean(val % 2));
-        min = Math.min(answer);
 
-        return answer, min;
+        const sum = answer.reduce((a, b) => a + b, 0);
+        const min = Math.min(...answer);
+
+        answer = [sum, min];
+
+        return answer;
       }
 
       arr = [12, 77, 38, 41, 53, 92, 85];
