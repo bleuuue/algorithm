@@ -7,8 +7,10 @@
     <script>
       function solution(day, arr) {
         let answer = 0;
+
+        // for(let x of arr)
         arr.forEach((val) => {
-          if (val % 10 === day) answer += 1;
+          if (val % 10 === day) answer++;
         });
         return answer;
       }
