@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer, sum;
+
+        outerLoop: for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            answer = arr.filter((val, index) => ![i, j].includes(index));
+            sum = answer.reduce((a, b) => a + b, 0);
+            if (sum < 100) break outerLoop;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
