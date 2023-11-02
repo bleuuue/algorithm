@@ -12,7 +12,7 @@
           for (let j = i + 1; j < arr.length; j++) {
             answer = arr.filter((val, index) => ![i, j].includes(index));
             sum = answer.reduce((a, b) => a + b, 0);
-            if (sum < 100) break outerLoop;
+            if (sum === 100) break outerLoop;
           }
         }
         return answer;
