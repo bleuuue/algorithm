@@ -7,6 +7,9 @@
     <script>
       function solution(arr) {
         let answer = [];
+        answer = arr.filter((val, i) => {
+          if (i === 0 || val > arr[i - 1]) return true;
+        });
         return answer;
       }
 
