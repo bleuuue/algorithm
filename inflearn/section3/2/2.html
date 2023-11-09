@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        const regex = /[^a-zA-Z]/g;
+        s = s.replace(regex, "");
+        const lowerArr = s.toLowerCase();
+        answer =
+          lowerArr === lowerArr.split("").reverse().join("") ? " YES" : "NO";
+
+        return answer;
+      }
+
+      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
