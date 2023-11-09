@@ -6,8 +6,11 @@
   <body>
     <script>
       function solution(s) {
-        let answer = "YES";
+        let answer;
+        const arr1 = str.toLowerCase();
+        const arr2 = arr1.split("").reverse().join("");
 
+        answer = arr1 === arr2 ? "YES" : "NO";
         return answer;
       }
 
