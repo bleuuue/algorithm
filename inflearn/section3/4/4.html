@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        for (let i = 0; i < s.length; i++) {
+          let distance = Number.MAX_SAFE_INTEGER;
+          for (let j = 0; j < s.length; j++) {
+            if (s[j] === t) {
+              const num = Math.abs(j - i);
+              if (distance > num) distance = num;
+            }
+          }
+          answer = [...answer, distance];
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
