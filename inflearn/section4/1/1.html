@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let answer;
+        arr.reduce((max, val) => {
+          arr = val.toString().split("");
+          const sum = arr.reduce((sum, a) => sum + Number(a), 0);
+          if (max > sum) return max;
+          if (max < sum) {
+            answer = val;
+            return sum;
+          }
+          if (answer < val) answer = val;
+        }, 0);
+        return answer;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
+</html>
