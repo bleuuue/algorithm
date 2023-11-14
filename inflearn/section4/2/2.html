@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function isDecimal(number) {
+        for (i = 2; i <= Math.ceil(number / 2); i++) {
+          if (number % i === 0) return true;
+        }
+        return false;
+      }
+      function solution(arr) {
+        let answer = [];
+        arr.forEach((val) => {
+          const reverse = Number(val.toString().split("").reverse().join(""));
+          console.log(reverse);
+          if (!isDecimal(reverse) && reverse !== 1)
+            answer = [...answer, reverse];
+        });
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
