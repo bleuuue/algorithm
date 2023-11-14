@@ -6,18 +6,18 @@
   <body>
     <script>
       function isDecimal(number) {
+        if (number === 1) return false;
+        // parseInt(Math.sqrt(num))
         for (i = 2; i <= Math.ceil(number / 2); i++) {
-          if (number % i === 0) return true;
+          if (number % i === 0) return false;
         }
-        return false;
+        return true;
       }
       function solution(arr) {
         let answer = [];
         arr.forEach((val) => {
           const reverse = Number(val.toString().split("").reverse().join(""));
-          console.log(reverse);
-          if (!isDecimal(reverse) && reverse !== 1)
-            answer = [...answer, reverse];
+          if (isDecimal(reverse)) answer = [...answer, reverse];
         });
         return answer;
       }
