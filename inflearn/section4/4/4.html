@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, product) {
+        let answer = 1;
+        product.sort((prev, next) => prev[0] + prev[1] - (next[0] + next[1]));
+        product.forEach((v, i) => {
+          let count = 1;
+          let price = v[0] / 2;
+          let delivery = v[1];
+          let sum = price + delivery;
+          product.forEach((val, j) => {
+            if (i === j) {
+              return;
+            }
+            price = val[0];
+            delivery = val[1];
+            sum += price + delivery;
+
+            if (sum > m) return;
+            if (count <= answer) answer = ++count;
+          });
+        });
+
+        return answer;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>
