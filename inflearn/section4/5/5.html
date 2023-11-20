@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k, card) {
+        let answer;
+        let sumSet = new Set();
+        for (i = 0; i < card.length - 2; i++) {
+          for (j = i + 1; j < card.length - 1; j++) {
+            for (m = i + 2; m < card.length; m++) {
+              sumSet.add(card[i] + card[j] + card[m]);
+            }
+          }
+        }
+        answer = [...sumSet].sort((a, b) => b - a)[k - 1];
+        return answer;
+      }
+
+      let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      console.log(solution(10, 3, arr));
+    </script>
+  </body>
+</html>
