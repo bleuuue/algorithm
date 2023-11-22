@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, arr) {
+        let answer = 0,
+          lt = 0,
+          rt = k;
+        let prevSum = arr.slice(lt, rt).reduce((a, b) => a + b, 0);
+
+        while (rt < arr.length) {
+          prevSum += arr[rt++] - arr[lt++];
+
+          if (prevSum > answer) {
+            answer = prevSum;
+          }
+        }
+
+        return answer;
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html>
