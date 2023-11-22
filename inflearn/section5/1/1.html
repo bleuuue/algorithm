@@ -7,7 +7,21 @@
     <script>
       function solution(arr1, arr2) {
         let answer = [];
-        answer = [...arr1, ...arr2].sort((a, b) => a - b);
+        let p1 = 0,
+          p2 = 0;
+        while (p1 <= arr1.length || p2 <= arr2.length) {
+          const isP1LastIndex = p1 === arr1.length;
+          const isP2LastIndex = p2 === arr2.length;
+
+          if (isP1LastIndex || isP2LastIndex) {
+            if (isP1LastIndex) answer = [...answer, ...arr2.slice(p2)];
+            else answer = [...answer, ...arr1.slice(p1)];
+            break;
+          }
+
+          if (arr1[p1] > arr2[p2]) answer = [...answer, arr2[p2++]];
+          else answer = [...answer, arr1[p1++]];
+        }
         return answer;
       }
 
