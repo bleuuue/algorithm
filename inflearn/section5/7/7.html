@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let answer = "YES";
+        const mapA = new Map();
+
+        for (let val of str1) {
+          if (mapA.has(val)) mapA.set(val, mapA.get(val) + 1);
+          else mapA.set(val, 1);
+        }
+
+        for (let val of str2) {
+          if (!mapA.has(val) || mapA.get(val) == 0) {
+            answer = "NO";
+            break;
+          }
+          mapA.set(val, mapA.get(val) - 1);
+        }
+
+        return answer;
+      }
+
+      let a = "AbaAeCe";
+      let b = "baeeACA";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
