@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        const obj = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+        for (val of s) {
+          obj[val] = obj[val] + 1;
+        }
+
+        Object.entries(obj).reduce((max, [key, value]) => {
+          if (max < value) {
+            answer = key;
+            return value;
+          }
+          return max;
+        }, 0);
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
