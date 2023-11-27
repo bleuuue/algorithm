@@ -5,8 +5,30 @@
   </head>
   <body>
     <script>
+      function transMap(str) {
+        const obj = new Map();
+        for (let val of str) {
+          if (!obj.has(val)) obj.set(val, 1);
+          else obj.set(val, obj.get(val) + 1);
+        }
+        return obj;
+      }
       function solution(s, t) {
         let answer = 0;
+        const tObj = transMap(t);
+
+        for (let i = 0; i < s.length - t.length; i++) {
+          const str = s.slice(i, i + t.length);
+          const obj = transMap(str);
+
+          for (let val of tObj) {
+            if (!obj.has(val) || obj.get(val) == 0) {
+              break;
+            }
+            mapA.set(val, mapA.get(val) - 1);
+          }
+        }
+
         return answer;
       }
 
