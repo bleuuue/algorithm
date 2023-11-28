@@ -5,28 +5,42 @@
   </head>
   <body>
     <script>
-      function transMap(str) {
-        const obj = new Map();
+      function transMap(str, obj) {
         for (let val of str) {
           if (!obj.has(val)) obj.set(val, 1);
           else obj.set(val, obj.get(val) + 1);
         }
-        return obj;
+      }
+      function compareMap(sMap, tMap) {
+        for (const [key, value] of tMap) {
+          if (sMap.get(key) != value) {
+            return false;
+          }
+        }
+        return true;
       }
       function solution(s, t) {
         let answer = 0;
-        const tObj = transMap(t);
+        const sMap = new Map();
+        const tMap = new Map();
+        let rt = t.length;
 
-        for (let i = 0; i < s.length - t.length; i++) {
-          const str = s.slice(i, i + t.length);
-          const obj = transMap(str);
+        transMap(t, tMap);
+        transMap(s.slice(0, t.length), sMap);
+        if (compareMap(sMap, tMap)) answer++;
 
-          for (let val of tObj) {
-            if (!obj.has(val) || obj.get(val) == 0) {
-              break;
-            }
-            mapA.set(val, mapA.get(val) - 1);
-          }
+        for (let lt = 0; lt < s.length - t.length; lt++) {
+          let deleteVal = sMap.get(s[lt]);
+
+          // 삭제
+          if (deleteVal > 1) sMap.set(s[lt], --deleteVal);
+          else sMap.delete(s[lt]);
+
+          // 추가
+          transMap(s[rt], sMap);
+
+          if (compareMap(sMap, tMap)) answer++;
+          rt++;
         }
 
         return answer;
