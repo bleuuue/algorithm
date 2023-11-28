@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "YES";
+        const stack = [];
+        for (let val of s) {
+          if (val === "(") stack.push(val);
+          else {
+            if (!stack.length) return "NO";
+            stack.pop();
+          }
+        }
+        if (stack.length) return "NO";
+
+        return answer;
+      }
+
+      let a = "(()(()))(()";
+      console.log(solution(a));
+    </script>
+  </body>
+</html>
