@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(times) {
+        let answer = 0;
+        let person = 0;
+        const timeLine = [];
+        times.forEach((time) => {
+          timeLine.push([time[0], "s"]);
+          timeLine.push([time[1], "e"]);
+        });
+        timeLine.sort((a, b) => {
+          if (a[0] === b[0]) return a[1].localeCompare(b[1]);
+          return a[0] - b[0];
+        });
+        timeLine.forEach((time) => {
+          if (time[1] === "s") person++;
+          else person--;
+          if (person > answer) answer = person;
+        });
+
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
