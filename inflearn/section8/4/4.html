@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = [];
+        const checkArr = Array.from({ length: n + 1 }, () => 0);
+
+        const DFS = (n) => {
+          if (n === 0) {
+            let value = "";
+            checkArr.forEach((val, i) => {
+              if (val === 1) value += i + " ";
+            });
+            if (value.length) answer.push(value.trim());
+          } else {
+            checkArr[n] = 1;
+            DFS(n - 1);
+            checkArr[n] = 0;
+            DFS(n - 1);
+          }
+        };
+        DFS(n);
+        return answer;
+      }
+
+      console.log(solution(3));
+    </script>
+  </body>
+</html>
