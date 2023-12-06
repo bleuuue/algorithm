@@ -8,8 +8,9 @@
       function solution(c, arr) {
         let answer = 0;
         const DFS = (L, sum) => {
+          if (sum > c) return;
           if (L === arr.length) {
-            if (sum > answer && sum <= c) answer = sum;
+            answer = Math.max(answer, sum);
           } else {
             DFS(L + 1, sum + arr[L]);
             DFS(L + 1, sum);
