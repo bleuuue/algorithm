@@ -9,9 +9,11 @@
         let answer = "";
         function DFS(n) {
           if (n > 7) return;
-          answer += n + " ";
+          console.log(n); // 전위 순회
           DFS(n * 2);
+          // console.log(n); // 중위 순회
           DFS(n * 2 + 1);
+          // console.log(n); // 후위 순회
         }
         DFS(n);
         return answer;
