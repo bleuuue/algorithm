@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, r) {
+        let answer = [];
+        const memo = Array.from({ length: n + 1 }, () => Array(r + 1).fill(0));
+        const DFS = (n, r) => {
+          if (memo[n][r]) return memo[n][r];
+          if ((n === r) | (r === 0)) return 1;
+          else return (memo[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r));
+        };
+        answer = DFS(n, r);
+        return answer;
+      }
+
+      console.log(solution(33, 19));
+    </script>
+  </body>
+</html>
