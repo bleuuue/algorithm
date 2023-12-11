@@ -7,6 +7,17 @@
     <script>
       function solution(n, f) {
         let answer;
+        const DFS = (L, num) => {
+          if (num > n || L === 1) {
+            return;
+          } else {
+            for (let i = 1; i <= parseInt(L / 2); i++) {
+              DFS(i, num--);
+              DFS(L - i, num--);
+            }
+          }
+        };
+        DFS(f);
         return answer;
       }
 
