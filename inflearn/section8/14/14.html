@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let answer = [];
+        const arr = [];
+        const DFS = (L, s) => {
+          if (L === m) {
+            answer.push(arr.slice());
+          } else {
+            for (let i = s; i < n; i++) {
+              arr[L] = i;
+              DFS(L + 1, s + 1);
+            }
+          }
+        };
+        DFS(0, 1);
+        return answer;
+      }
+
+      console.log(solution(4, 2));
+    </script>
+  </body>
+</html>
