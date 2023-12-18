@@ -1,19 +1,26 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(){  
-                let answer="";
-                return answer;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution() {
+        let answer = "";
+        const queue = [1];
 
-            console.log(solution());
-        </script>
-    </body>
+        while (queue.length) {
+          const num = queue.shift();
+          answer += num + " ";
+          for (let nv of [num * 2, num * 2 + 1]) {
+            if (nv > 7) continue;
+            queue.push(nv);
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution());
+    </script>
+  </body>
 </html>
-
-
-
