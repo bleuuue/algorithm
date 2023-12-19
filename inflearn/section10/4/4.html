@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, coin) {
+        let answer = 0;
+        const count = [0];
+
+        coin.forEach((val) => {
+          for (let i = val; i <= m; i++) {
+            count[i] = count[i]
+              ? Math.min(count[i], count[i - val] + 1)
+              : count[i - val] + 1;
+          }
+        });
+        answer = count[m];
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
