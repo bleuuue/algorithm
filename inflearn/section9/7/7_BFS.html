@@ -7,6 +7,35 @@
     <script>
       function solution(board) {
         let answer = 0;
+        const dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+        const dy = [0, 1, 1, 1, 0, -1, -1, -1];
+        const n = board.length;
+        const queue = [];
+
+        for (i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            if (!board[i][j]) continue;
+
+            answer++;
+            board[i][j] = 0;
+            queue.push([i, j]);
+
+            while (queue.length) {
+              let [x, y] = queue.shift();
+
+              for (let k = 0; k < 8; k++) {
+                let nx = x + dx[k];
+                let ny = y + dy[k];
+
+                if ((nx < 0) | (ny < 0) | (nx > n - 1) | (ny > n - 1)) continue;
+                if (board[nx][ny]) {
+                  board[nx][ny] = 0;
+                  queue.push([nx, ny]);
+                }
+              }
+            }
+          }
+        }
         return answer;
       }
 
