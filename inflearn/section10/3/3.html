@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        const dis = [1];
+
+        for (let i = 1; i < arr.length; i++) {
+          const maxDis = arr.slice(0, i).reduce((max, val, j) => {
+            if (val < arr[i] && max < dis[j]) return dis[j];
+            else return max;
+          }, 0);
+
+          dis[i] = maxDis + 1;
+        }
+
+        answer = Math.max(...dis);
+        return answer;
+      }
+
+      let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
