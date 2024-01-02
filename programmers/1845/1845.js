@@ -1,14 +1,7 @@
 function solution(nums) {
-  const map = new Map();
+  const max = nums.length / 2;
+  const size = new Set(nums).size;
 
-  nums.forEach((num) => {
-    if (map.has(num)) return;
-    map.set(num, 1);
-  });
-
-  const number = nums.length / 2;
-  const size = map.size;
-
-  answer = size > number ? number : size;
+  answer = size > max ? max : size;
   return answer;
 }
